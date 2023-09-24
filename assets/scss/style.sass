@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap')
+
+
+$--white-color: hsl(0, 0, 100%)
+$--black-color: hsl(0, 0, 0%)
+
+$--body-font: "Poppins", san-serif
+$--h1-font-size: 1.75rem
+$--normal-size: 1rem
+$--small-font-size: .813rem
+
+$--font-medium: 500
+
+
+*
+    box-sizing: border-box
+    padding: 0
+    margin: 0
+
+body, input, button
+    font-size: $--normal-size
+    font-family: $--body-font
+
+body
+    color: $--white-color
+
+
+input, button
+    border: none
+    outline: none
+
+input::-ms-reveal, input::-ms-clear
+    display: none
+
+a
+    text-decoration: none
+
+img
+    max-width: 100%
+    height: auto
+
+
+.login
+    position: relative
+    height: 100vh
+    display: grid
+    align-items: center
+
+    &__img
+        position: absolute
+        width: 100%
+        height: 100%
+        object-fit: cover
+        object-position: center
+
+    &__form
+        position: relative
+        background: hsla(0, 0%, 10%, .11)
+        border: 2px solid $--white-color
+        margin-inline: 1.5rem
+        padding: 2.5rem 1.5rem
+        border-radius: 1rem
+        backdrop-filter: blur(8px)
+
+    &__title
+        text-align: center
+        font-size: $--h1-font-size
+        font-weight: $--font-medium
+        margin-bottom: 2rem
+
+    &__content, &__box
+        display: grid
+
+    &__content
+        row-gap: 1.75rem
+        margin-bottom: 1.5rem
+
+    &__box
+        grid-template-columns: max-content 1fr
+        align-items: center
+        column-gap: .75rem
+        border-bottom: 2px solid $--white-color
+
+    &__icon, &__eye
+        font-size: 1.25rem
+
+    &__input
+        width: 100%
+        padding-block: .8rem
+        background: none
+        color: $--white-color
+        position: relative
+        z-index: 1
+
+    &__box-input
+        position: relative
+
+    &__label
+        position: absolute
+        left: 0
+        top: 13px
+        font-weight: $--font-medium
+        transition: top .3s, font-size
+
+    &__eye
+        position: absolute
+        right: 0
+        top: 18px
+        z-index: 10
+        cursor: pointer
+
+    &__box:nth-last-child(2) input
+        padding-right: 1.8rem
+
+    &__check, &__check-group
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+    &__check
+        margin-bottom: 1.5rem
+
+
+    &__check-label, &__forgot, &__register
+        font-size: $--small-font-size
+
+    &__check-group
+        column-gap: .5rem
+
+    &__check-label
+        height: 16px
+
+    &__forgot
+        color: $--white-color
+
+    &__forgot:hover
+        text-decoration: underline
+
+    &__button
+        width: 100%
+        padding: 1rem
+        border-radius: .5rem
+        background-color: $--white-color
+        font-weight: $--font-medium
+        cursor: pointer
+        margin-bottom: 2rem
+
+    &__register
+        text-align: center
+
+    &__register a
+        color: $--white-color
+        font-weight: $--font-medium
+
+    &__register a:hover
+        text-decoration: underline
+
+    &__input:focus + &__label
+        top: -12px
+        font-size: $--small-font-size
+
+    &__input:not(:placeholder-shown).login__input:not(:focus) + .login__label
+        top: -12px
+        font-size: $--small-font-size
+        
+
+@media screen and (min-width: 576px)     
+    .login
+        justify-content: center
+        
+        &__form
+            width: 432px
+            padding: 4rem 3rem 3.5rem
+            border-radius: 1.5rem
+
+        &__title
+            font-size: 2rem
+
