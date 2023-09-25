@@ -25,3 +25,5 @@ showHiddenPass('login-password', 'login-eye')
 
 
 //store email and password
+
+// const showRegisterPage = ()

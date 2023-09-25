@@ -2,7 +2,9 @@
 
 
 $--white-color: hsl(0, 0, 100%)
+$--white-color-alt: hsl(0, 0, 85%)
 $--black-color: hsl(0, 0, 0%)
+$--black-color-alt: hsl(0, 0, 5%)
 
 $--body-font: "Poppins", san-serif
 $--h1-font-size: 1.75rem
@@ -39,6 +41,8 @@ img
     max-width: 100%
     height: auto
 
+.hide
+    display: none
 
 .login
     position: relative
@@ -140,10 +144,13 @@ img
         width: 100%
         padding: 1rem
         border-radius: .5rem
-        background-color: $--white-color
         font-weight: $--font-medium
         cursor: pointer
         margin-bottom: 2rem
+        transition: .5s
+
+        &:hover
+            background-color: $--white-color
 
     &__register
         text-align: center
@@ -162,7 +169,53 @@ img
     &__input:not(:placeholder-shown).login__input:not(:focus) + .login__label
         top: -12px
         font-size: $--small-font-size
-        
+
+.register
+    &__name-group
+    // display: flex
+
+        & .login__label
+            // columns-gap: 1.5rem
+            // width: 30%
+
+    &__password-check
+        text-align: center
+            
+
+.forget
+    &__button-group
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+    &__button
+        width: 49%
+        padding: 1rem
+        border-radius: .5rem
+        font-weight: $--font-medium
+        cursor: pointer
+        margin-bottom: 2rem
+        transition: .5s
+
+.bad
+    background-color: #CE6D8B 
+    color: $--white-color-alt
+    transition: .5s
+
+    &:hover
+        background-color: #CE2D4F
+        color: $--white-color
+        transition: .5s
+.good
+    background-color: $--white-color-alt
+    color: $--black-color-alt
+
+    &:hover
+        background-color: $--white-color
+        color: $--black-color
+
+
+
 
 @media screen and (min-width: 576px)     
     .login
@@ -176,3 +229,5 @@ img
         &__title
             font-size: 2rem
 
+
+//animation for form border from login to register, forgot password, etc

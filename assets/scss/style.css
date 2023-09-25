@@ -32,6 +32,10 @@ img {
   height: auto;
 }
 
+.hide {
+  display: none;
+}
+
 .login {
   position: relative;
   height: 100vh;
@@ -136,10 +140,13 @@ img {
   width: 100%;
   padding: 1rem;
   border-radius: 0.5rem;
-  background-color: hsl(0, 0%, 100%);
   font-weight: 500;
   cursor: pointer;
   margin-bottom: 2rem;
+  transition: 0.5s;
+}
+.login__button:hover {
+  background-color: hsl(0, 0%, 100%);
 }
 .login__register {
   text-align: center;
@@ -162,6 +169,45 @@ img {
 .login__input:not(:placeholder-shown).login__input:not(:focus) + .login__label {
   top: -12px;
   font-size: 0.813rem;
+}
+
+.register__password-check {
+  text-align: center;
+}
+
+.forget__button-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.forget__button {
+  width: 49%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: 0.5s;
+}
+
+.bad {
+  background-color: #CE6D8B;
+  color: hsl(0, 0%, 85%);
+  transition: 0.5s;
+}
+.bad:hover {
+  background-color: #CE2D4F;
+  color: hsl(0, 0%, 100%);
+  transition: 0.5s;
+}
+
+.good {
+  background-color: hsl(0, 0%, 85%);
+  color: hsl(0, 0%, 5%);
+}
+.good:hover {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 0%);
 }
 
 @media screen and (min-width: 576px) {
