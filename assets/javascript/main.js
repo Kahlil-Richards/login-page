@@ -22,6 +22,39 @@ const showHiddenPass = (loginPass, loginEye) => {
 }
 
 showHiddenPass('login-password', 'login-eye')
+showHiddenPass('register-password', 'login-eye-1')
+showHiddenPass('register-password-confirm', 'login-eye-2')
+
+
+const loginForm = document.getElementById('login-form'),
+    registerForm = document.getElementById('register-form'),
+    forgotForm = document.getElementById('forget-form')
+
+
+const changeForm = (selectedButton) => {
+    const sButton = document.getElementById(selectedButton)
+
+    sButton.addEventListener('click', () => {
+
+        loginForm.classList.add('hide')
+        registerForm.classList.add('hide')
+        forgotForm.classList.add('hide')
+
+        if (selectedButton === 'login-register') {
+            registerForm.classList.remove('hide')
+        } else if ((selectedButton === 'register-login') || (selectedButton === 'forget-cancel-button')) {
+            loginForm.classList.remove('hide')
+        } else if (selectedButton === 'forgot-password') {
+            forgotForm.classList.remove('hide')
+        }
+    })
+}
+
+changeForm('login-register')
+changeForm('register-login')
+changeForm('forget-cancel-button')
+changeForm('forgot-password')
+
 
 
 //store email and password
