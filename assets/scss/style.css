@@ -181,8 +181,8 @@ img {
 }
 .register__name-group {
   display: flex;
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
   width: 100%;
 }
 .register__password-check {
@@ -210,7 +210,7 @@ img {
 
 .bad {
   background-color: #CE6D8B;
-  color: hsl(0, 0%, 85%);
+  color: hsl(0, 0%, 80%);
   transition: 0.5s;
 }
 .bad:hover {
@@ -220,8 +220,8 @@ img {
 }
 
 .good {
-  background-color: hsl(0, 0%, 85%);
-  color: hsl(0, 0%, 5%);
+  background-color: hsl(0, 0%, 80%);
+  color: hsl(0, 0%, 20%);
 }
 .good:hover {
   background-color: hsl(0, 0%, 100%);
@@ -232,12 +232,12 @@ img {
   .login {
     justify-content: center;
   }
-  .login__form {
+  .login__title {
+    font-size: 2rem;
+  }
+  .login__form, .register__form, .forget__form {
     width: 432px;
     padding: 4rem 3rem 3.5rem;
     border-radius: 1.5rem;
-  }
-  .login__title {
-    font-size: 2rem;
   }
 }/*# sourceMappingURL=style.css.map */

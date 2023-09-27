@@ -2,9 +2,9 @@
 
 
 $--white-color: hsl(0, 0, 100%)
-$--white-color-alt: hsl(0, 0, 85%)
+$--white-color-alt: hsl(0, 0, 80%)
 $--black-color: hsl(0, 0, 0%)
-$--black-color-alt: hsl(0, 0, 5%)
+$--black-color-alt: hsl(0, 0, 20%)
 
 $--body-font: "Poppins", san-serif
 $--h1-font-size: 1.75rem
@@ -180,7 +180,7 @@ img
 
     &__name-group
         display: flex
-        column-gap: 1rem
+        column-gap: .5rem
         width: 100%
 
     &__password-check
@@ -230,13 +230,13 @@ img
     .login
         justify-content: center
         
-        &__form
-            width: 432px
-            padding: 4rem 3rem 3.5rem
-            border-radius: 1.5rem
 
         &__title
             font-size: 2rem
 
+    .login__form, .register__form, .forget__form 
+        width: 432px
+        padding: 4rem 3rem 3.5rem
+        border-radius: 1.5rem
 
 //animation for form border from login to register, forgot password, etc
