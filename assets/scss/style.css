@@ -190,6 +190,10 @@ img {
   margin-bottom: 1rem;
 }
 
+.forget__box {
+  display: block;
+  margin-bottom: 1rem;
+}
 .forget__button-group {
   display: flex;
   align-items: center;
@@ -205,7 +209,9 @@ img {
   transition: 0.5s;
 }
 .forget__content {
-  margin-bottom: 2rem;
+  row-gap: 1.75rem;
+  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .bad {

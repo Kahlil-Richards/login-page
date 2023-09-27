@@ -44,6 +44,7 @@ const changeForm = (selectedButton) => {
             registerForm.classList.remove('hide')
         } else if ((selectedButton === 'register-login') || (selectedButton === 'forget-cancel-button')) {
             loginForm.classList.remove('hide')
+            document.getElementById('forget-email').value = ' '
         } else if (selectedButton === 'forgot-password') {
             forgotForm.classList.remove('hide')
         }
