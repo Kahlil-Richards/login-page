@@ -196,13 +196,6 @@ img {
   font-weight: 500;
   transition: top 0.3s, font-size;
 }
-.register__input {
-  padding-block: 0.8rem;
-  background: none;
-  color: hsl(0, 0%, 100%);
-  position: relative;
-  z-index: 1;
-}
 .register__input:focus + .register__label {
   top: -12px;
   font-size: 0.813rem;
