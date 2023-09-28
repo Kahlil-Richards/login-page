@@ -36,13 +36,13 @@
             </div>
             <div class="login__check">
                 <div class="login__check-group">
-                    <input type="checkbox" class="login__check-input">
+                    <input type="checkbox" class="login__check-input" id="login-remember">
                     <label for=" " class="login__check-label ">Remember me</label>
                 </div>
                 <a href="#" class="login__forgot" id="forgot-password">Forgot Password?</a>
             </div>
 
-            <button class="login__button good" id="login-button">Login</button>
+            <button class="login__button good" id="login-button" onclick="loginButton()" return false>Login</button>
 
             <p class="login__register">
                 Don't have an account? <a href="#" id="login-register">Register</a>

@@ -57,7 +57,28 @@ changeForm('forget-cancel-button')
 changeForm('forgot-password')
 
 
+const savedEmail = localStorage.getItem("loginEmail"),
+    savedPassword = localStorage.getItem("loginPassword")
+
+document.getElementById('login-email').value = savedEmail
+document.getElementById('login-password').value = savedPassword
+
+const loginButton = () => {
+
+    const loginEmail = document.getElementById('login-email').value,
+        loginPassword = document.getElementById('login-password').value,
+        loginRemember = document.getElementById('login-remember')
+
+    if (loginRemember.checked) {
+        //save to device if select remember
+        localStorage.setItem("loginEmail", loginEmail)
+        localStorage.setItem("loginPassword", loginPassword)
+    } else {
+        localStorage.setItem("loginEmail", "")
+        localStorage.setItem("loginPassword", "")
+    }
+
+    //function to pass email and password to databaes
+}
 
 //store email and password
-
-// const showRegisterPage = ()
