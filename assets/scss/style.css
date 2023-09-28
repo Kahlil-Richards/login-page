@@ -261,7 +261,7 @@ img {
   color: hsl(0, 0%, 0%);
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 300px) {
   .login {
     justify-content: center;
   }
