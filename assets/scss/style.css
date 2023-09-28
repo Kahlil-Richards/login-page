@@ -196,19 +196,6 @@ img {
   font-weight: 500;
   transition: top 0.3s, font-size;
 }
-.register__input:focus + .register__label {
-  top: -12px;
-  font-size: 0.813rem;
-}
-.register__input:not(:-moz-placeholder-shown).register__input:not(:focus) + .register__label {
-  top: -12px;
-  font-size: 0.813rem;
-}
-.register__input:not(:placeholder-shown).register__input:not(:focus) + .register__label {
-  top: -12px;
-  font-size: 0.813rem;
-}
-
 .forget__box {
   display: block;
   margin-bottom: 1rem;
