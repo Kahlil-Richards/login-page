@@ -190,12 +190,31 @@ img {
   margin-bottom: 1rem;
 }
 .register__label {
-  position: absolute;
-  left: 0;
   top: 13px;
   font-weight: 500;
   transition: top 0.3s, font-size;
 }
+.register__input {
+  width: 100%;
+  padding-block: 0.8rem;
+  background: none;
+  color: hsl(0, 0%, 100%);
+  position: relative;
+  z-index: 1;
+}
+.register__input:focus + .register__label {
+  top: -12px;
+  font-size: 0.813rem;
+}
+.register__input:not(:-moz-placeholder-shown).register__input:not(:focus) + .register__label {
+  top: -12px;
+  font-size: 0.813rem;
+}
+.register__input:not(:placeholder-shown).register__input:not(:focus) + .register__label {
+  top: -12px;
+  font-size: 0.813rem;
+}
+
 .forget__box {
   display: block;
   margin-bottom: 1rem;
