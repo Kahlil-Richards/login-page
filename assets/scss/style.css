@@ -178,6 +178,7 @@ img {
   -moz-column-gap: 0.75rem;
        column-gap: 0.75rem;
   border-bottom: 2px solid hsl(0, 0%, 100%);
+  transition: 1s;
 }
 .register__name-group {
   display: flex;
@@ -215,6 +216,31 @@ img {
 .register__input:not(:placeholder-shown).register__input:not(:focus) + .register__label {
   top: -12px;
   font-size: 0.813rem;
+}
+
+.default {
+  color: hsl(0, 0%, 100%);
+  border-bottom: 2px solid hsl(0, 0%, 100%);
+}
+
+.weak {
+  border-bottom: 5px solid red;
+  transition: 1s;
+}
+
+.medium-weak {
+  border-bottom: 4px solid orange;
+  transition: 1s;
+}
+
+.medium-strong {
+  border-bottom: 3px solid yellow;
+  transition: 1s;
+}
+
+.strong {
+  border-bottom: 2px solid green;
+  transition: 1s;
 }
 
 .forget__box {

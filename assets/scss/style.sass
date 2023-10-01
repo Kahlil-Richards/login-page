@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap')
 
-
 $--white-color: hsl(0, 0, 100%)
 $--white-color-alt: hsl(0, 0, 80%)
 $--black-color: hsl(0, 0, 0%)
 $--black-color-alt: hsl(0, 0, 20%)
+$--weak-color: red
+$--medium-weak-color: orange
+$--medium-strong-color: yellow
+$--strong-color: green
 
 $--body-font: "Poppins", san-serif
 $--h1-font-size: 1.75rem
@@ -12,7 +15,6 @@ $--normal-size: 1rem
 $--small-font-size: .813rem
 
 $--font-medium: 500
-
 
 *
     box-sizing: border-box
@@ -25,7 +27,6 @@ body, input, button
 
 body
     color: $--white-color
-
 
 input, button
     border: none
@@ -124,7 +125,6 @@ img
     &__check
         margin-bottom: 1.5rem
 
-
     &__check-label, &__forgot, &__register
         font-size: $--small-font-size
 
@@ -177,6 +177,7 @@ img
         align-items: center
         column-gap: .75rem
         border-bottom: 2px solid $--white-color
+        transition: 1s
 
     &__name-group
         display: flex
@@ -187,7 +188,7 @@ img
         text-align: center
         margin-bottom: 1rem
 
-    &__label   
+    &__label
         position: absolute
         left: 0
         top: 13px
@@ -210,12 +211,25 @@ img
         top: -12px
         font-size: $--small-font-size
 
+.default
+    color: $--white-color
+    border-bottom: 2px solid $--white-color
+
 .weak
-    color: $--weak-color
-.medium
+    border-bottom: 5px solid $--weak-color
+    transition: 1s
+
+.medium-weak
+    border-bottom: 4px solid $--medium-weak-color
+    transition: 1s
+
+.medium-strong
+    border-bottom: 3px solid $--medium-strong-color
+    transition: 1s
 
 .strong
-
+    border-bottom: 2px solid $--strong-color
+    transition: 1s
 
 .forget
     &__box
@@ -245,7 +259,7 @@ img
         font-size: $--normal-size
 
 .bad
-    background-color: #CE6D8B 
+    background-color: #CE6D8B
     color: $--white-color-alt
     transition: .5s
 
@@ -261,20 +275,16 @@ img
         background-color: $--white-color
         color: $--black-color
 
-
-
-
 // @media screen and (min-width: 576px)     
-@media screen and (min-width: 400px)     
+@media screen and (min-width: 400px)
     .login
     .login
         justify-content: center
-        
 
         &__title
             font-size: 2rem
 
-    .login__form, .register__form, .forget__form 
+    .login__form, .register__form, .forget__form
         width: 432px
         padding: 4rem 3rem 3.5rem
         border-radius: 1.5rem

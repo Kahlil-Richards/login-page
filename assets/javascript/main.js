@@ -35,6 +35,7 @@ const changeForm = (selectedButton) => {
         forgotForm = document.getElementById("forget-form"),
         sButton = document.getElementById(selectedButton);
 
+
     sButton.addEventListener("click", () => {
         loginForm.classList.add("hide");
         registerForm.classList.add("hide");
@@ -73,14 +74,14 @@ const loginButton = () => {
         //save to device if select remember
         localStorage.setItem("loginEmail", loginEmail);
         localStorage.setItem("loginPassword", loginPassword);
-        alert("login confirmation message. Your device will now remember your login information. Refresh page to see result.");
+        alert('Login data will be sent to database. Your device will now remember your login information. Refresh page to see result.');
 
         //clear fields
         clearForms();
     } else {
         localStorage.setItem("loginEmail", "");
         localStorage.setItem("loginPassword", "");
-        alert("login confirmation message. ");
+        alert("Login data will be sent to database.");
         clearForms();
     }
 
@@ -98,22 +99,30 @@ const registerButton = () => {
         registerEmail = document.getElementById("register-email").value,
         registerPassword = document.getElementById("register-password").value
 
-    errorCheck = 0
+    const check = (list) => {
+        const setItem = new Set(list);
+        return setItem.size <= 1;
+    }
 
-    // firstName()
-    // lastName()
-    // email()
-    // password()
-    // passwordConfirmation()
-    alert(errorCheck)
+    if (check(errorCheck)) {
+        register(registerFirstName, registerLastName, registerEmail, registerPassword);
+        clearForms()
 
-    // if (errorCheck < 1) {
-    //     // document.getElementById('password-match-error').innerHTML = 'First Name format is incorrect!'
+        document.getElementById("password-match-error").innerHTML = "Thank you for registering. Please follow the instructions in your email to verify your account. You will be redirected to the login page in 10 seconds.";
 
+        //make code show updated time count down
 
-    //     register(registerFirstName, registerLastName, registerEmail, registerPassword);
-    //     clearForms();
-    // }
+        setTimeout(function() {
+            //go back to login
+            document.getElementById("login-form").classList.remove("hide");
+            document.getElementById("register-form").classList.add("hide");
+            document.getElementById("password-match-error").innerHTML = ''
+
+        }, 10000);
+
+    } else {
+        document.getElementById("password-match-error").innerHTML = "Please check errors!";
+    }
 };
 const register = (firstName, LastName, email, password) => {};
 
@@ -123,10 +132,7 @@ const register = (firstName, LastName, email, password) => {};
 const resetButton = () => {
     const forgetEmail = document.getElementById("forget-email").value;
 
-    document.getElementById("forget-confirmation").innerHTML =
-        "If your email is in our system, we will send a reset link to " +
-        forgetEmail +
-        ". Please read the email and for instructions to complete your password reset.";
+    document.getElementById("forget-confirmation").innerHTML = "If your email is in our system, we will send a reset link to " + forgetEmail + ". Please read the email and for instructions to complete your password reset.";
 
     //send email to database for confirmation
     reset(forgetEmail);
@@ -157,57 +163,129 @@ const clearForms = () => {
 
 
 const alphaExp = /^[a-zA-Z ]+$/,
-    emailExp =
-    /^[a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{1,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9 ]{0,}$/i,
-    numberExp = /^[0-9]+$/,
-    // characterExp = /^+$/,
-    upperExp = /^[A-Z]+$/,
-    errorCheck = 0;
-const
-    firstName = () => {
+    emailExp = /^[a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{1,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9 ]{0,}$/i,
+    numberExp = /[0-9]/,
+    characterExp = /[^a-zA-Z0-9]/,
+    upperExp = /[A-Z]/,
+    errorCheck = [];
+
+
+const firstName = () => {
         const firstName = document.getElementById("register-first-name").value;
 
         if (firstName.match(alphaExp)) {
+            // firstName.classList.add('weak')
             document.getElementById("password-match-error").innerHTML = "";
-            errorCheck -= 1
-            alert(errorCheck)
+            errorCheck.splice(0, 1, true)
         } else {
             document.getElementById("password-match-error").innerHTML = "First Name format is incorrect!";
-            errorCheck += 1
+            errorCheck.splice(0, 1, false)
         }
     },
     lastName = () => {
         const lastName = document.getElementById("register-last-name").value;
         if (lastName.match(alphaExp)) {
             document.getElementById("password-match-error").innerHTML = "";
-            errorCheck -= 1
+            errorCheck.splice(1, 1, true)
         } else {
             document.getElementById("password-match-error").innerHTML = "Last Name format is incorrect!";
-            errorCheck += 1
+            errorCheck.splice(1, 1, false)
         }
     },
     email = () => {
         const email = document.getElementById("register-email").value;
         if (email.match(emailExp)) {
             document.getElementById("password-match-error").innerHTML = "";
-            errorCheck -= 1
+            errorCheck.splice(2, 1, true)
         } else {
             document.getElementById("password-match-error").innerHTML =
                 "Email format is incorrect!";
-            errorCheck += 1
+            errorCheck.splice(2, 1, false)
         }
     },
     password = () => {
         const password = document.getElementById("register-password").value;
+        var strength = 0
+
+        document.getElementById("password-match-error").innerHTML = ""
+
+
+
+        if (password.length > 7) {
+            document.getElementById("password-match-error").innerHTML += "";
+            errorCheck.splice(3, 1, true)
+            strength += password.length
+        } else {
+            document.getElementById("password-match-error").innerHTML = "Password Requires a min of 8 Characters.<br>";
+            errorCheck.splice(3, 1, false)
+            strength += password.length
+        }
+
+        if (password.match(numberExp)) {
+            document.getElementById("password-match-error").innerHTML += "";
+            errorCheck.splice(4, 1, true)
+            strength += 5
+        } else {
+            document.getElementById("password-match-error").innerHTML += "Please include numeric character in password.<br>";
+            errorCheck.splice(4, 1, false)
+        }
+
+        if (password.match(upperExp)) {
+            document.getElementById("password-match-error").innerHTML += "";
+            errorCheck.splice(5, 1, true)
+            strength += 5
+        } else {
+            document.getElementById("password-match-error").innerHTML += "Please include an upper case letter in password.<br>";
+            errorCheck.splice(5, 1, false)
+        }
 
         //check how strong password is
-        if (password.length > 8) {
-            document.getElementById("password-match-error").innerHTML = "";
-            errorCheck -= 1
+
+        if (password.match(characterExp)) {
+            document.getElementById("password-match-error").innerHTML += "";
+            errorCheck.splice(6, 1, true)
+            strength += 5
         } else {
-            document.getElementById("password-match-error").innerHTML = "Password Requires a min of 8 Characters.";
-            errorCheck += 1
+            document.getElementById("password-match-error").innerHTML += "Please include a character in password.";
+            errorCheck.splice(6, 1, false)
         }
+
+        const statusColor = document.getElementById('password-status')
+
+        if (document.getElementById("password-match-error").innerHTML === '') {
+            statusColor.classList.add('default')
+        } else {
+            statusColor.classList.remove('default')
+        }
+
+        if (strength < (password.length + 5)) {
+            //weak color
+            statusColor.classList.add('weak')
+        } else {
+            statusColor.classList.remove('weak')
+        }
+
+        if (strength >= (password.length + 5)) {
+            //medium weak color
+            statusColor.classList.add('medium-weak')
+        } else {
+            statusColor.classList.remove('medium-weak')
+        }
+
+        if (strength >= (password.length + 10)) {
+            //medium strong color
+            statusColor.classList.add('medium-strong')
+        } else {
+            statusColor.classList.remove('medium-strong')
+        }
+
+        if (strength >= (password.length + 15)) {
+            //strong color
+            statusColor.classList.add('strong')
+        } else {
+            statusColor.classList.remove('strong')
+        }
+
     },
     passwordConfirmation = () => {
         const password = document.getElementById("register-password").value,
@@ -215,15 +293,15 @@ const
 
         //check
         if (passwordConfirm.length > 0) {
-            if (passwordConfirm.match(password)) {
+            if (passwordConfirm === password) {
                 document.getElementById("password-match-error").innerHTML = "";
-                errorCheck -= 1
+                errorCheck.splice(7, 1, true)
             } else {
                 document.getElementById("password-match-error").innerHTML = "Passwords do not match!";
-                errorCheck += 1
+                errorCheck.splice(7, 1, false)
             }
         } else {
             document.getElementById("password-match-error").innerHTML = "";
-            errorCheck -= 1
+            errorCheck.splice(7, 1, false)
         }
     };
