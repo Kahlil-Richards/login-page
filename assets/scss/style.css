@@ -219,8 +219,8 @@ img {
 }
 
 .default {
-  color: hsl(0, 0%, 100%);
   border-bottom: 2px solid hsl(0, 0%, 100%);
+  transition: 1s;
 }
 
 .weak {

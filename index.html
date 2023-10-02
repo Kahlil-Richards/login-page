@@ -81,7 +81,7 @@
                 </div>
                 <div class="register__box" id="password-status">
                     <div class="login__box-input">
-                        <input type="password" required class="login__input" id="register-password" placeholder=" " oninput="password()" />
+                        <input type="password" required class="login__input" id="register-password" placeholder=" " oninput="password()" onblur="changeToDefault()" />
                         <label for=" " class="login__label">Password</label>
                         <i class="ri-eye-off-line login__eye" id="login-eye-1"></i>
                     </div>
@@ -129,10 +129,10 @@
                     </label>
             </div>
             <div class="forget__button-group">
-                <button class="forget__button bad" id="forget-cancel-button">
+                <button class="forget__button good" id="forget-cancel-button">
                         Back
                     </button>
-                <button class="forget__button good" id="forget-search-button " type="submit">
+                <button class="forget__button bad" id="forget-search-button " type="submit">
                         Reset
                     </button>
             </div>
