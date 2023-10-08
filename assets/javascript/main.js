@@ -108,7 +108,7 @@ const registerButton = () => {
 
     if (check(errorCheck)) {
         register(registerFirstName, registerLastName, registerEmail, registerPassword);
-        clearForms()
+
 
         var seconds = 10
             //make code show updated time count down
@@ -120,6 +120,7 @@ const registerButton = () => {
 
             if (seconds < 0) {
                 //go back to login
+                clearForms()
                 document.getElementById("login-form").classList.remove("hide");
                 document.getElementById("register-form").classList.add("hide");
                 document.getElementById("password-match-error").innerHTML = ''
@@ -231,8 +232,8 @@ const firstName = () => {
             errorCheck.splice(3, 1, "")
             strength += password.length
         } else {
-            document.getElementById("password-match-error").innerHTML = "Password Requires a min of 8 Characters.<br>";
-            errorCheck.splice(3, 1, "Password Requires a min of 8 Characters.")
+            document.getElementById("password-match-error").innerHTML = "Password Requires 8 Characters min.<br>";
+            errorCheck.splice(3, 1, "Password Requires 8 Characters min.")
             strength += password.length
         }
 
@@ -241,8 +242,8 @@ const firstName = () => {
             errorCheck.splice(4, 1, "")
             strength += 5
         } else {
-            document.getElementById("password-match-error").innerHTML += "Please include numeric character in password.<br>";
-            errorCheck.splice(4, 1, "Please include numeric character in password.")
+            document.getElementById("password-match-error").innerHTML += "Password requires numeric character.<br>";
+            errorCheck.splice(4, 1, "Password requires numeric character.")
         }
 
         if (password.match(lowerExp)) {
@@ -250,8 +251,8 @@ const firstName = () => {
             errorCheck.splice(5, 1, "")
             strength += 5
         } else {
-            document.getElementById("password-match-error").innerHTML += "Please include an upper case letter in password.<br>";
-            errorCheck.splice(5, 1, "Please include a lower case letter in password.")
+            document.getElementById("password-match-error").innerHTML += "Password requires a lower case character.<br>";
+            errorCheck.splice(5, 1, "Password requires a lower case character.")
 
         }
         if (password.match(upperExp)) {
@@ -259,8 +260,8 @@ const firstName = () => {
             errorCheck.splice(6, 1, "")
             strength += 5
         } else {
-            document.getElementById("password-match-error").innerHTML += "Please include an upper case letter in password.<br>";
-            errorCheck.splice(6, 1, "Please include an upper case letter in password.")
+            document.getElementById("password-match-error").innerHTML += "Password requires a upper case character.<br>";
+            errorCheck.splice(6, 1, "Password requires a upper case character.")
         }
 
         //check how strong password is
@@ -270,8 +271,8 @@ const firstName = () => {
             errorCheck.splice(7, 1, "")
             strength += 5
         } else {
-            document.getElementById("password-match-error").innerHTML += "Please include a character in password.<br>";
-            errorCheck.splice(7, 1, "Please include a character in password.")
+            document.getElementById("password-match-error").innerHTML += "Password requires a special character.<br>";
+            errorCheck.splice(7, 1, "Password requires a special character.")
         }
 
 
